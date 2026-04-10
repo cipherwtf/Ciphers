@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
+body{
+  background:#0b0b10;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Top Bar */
+.topbar{
+  position:fixed;
+  top:20px;
+  left:20px;
+  display:flex;
+  gap:12px;
+  z-index:1000;
+}
+.tab{
+  background:#151522;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  opacity:.8;
+  transition:.2s;
+}
+.tab:hover{opacity:1;background:#6b5cff}
+
+/* Sections */
+.section{
+  display:none;
+  padding:120px 20px;
+  max-width:900px;
+  margin:auto;
+}
+.section.active{display:block}
+
+/* Hero */
+.hero{
+  height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  background:radial-gradient(circle at top,#1b1b2a,#0b0b10 60%);
+  position:relative;
+}
+.glow{
+  position:absolute;
+  width:700px;height:700px;
+  background:radial-gradient(circle,#6b5cff33,transparent 60%);
+  filter:blur(80px);
+  top:-200px;
+}
+.hero h1{font-size:48px;margin-bottom:16px}
+.hero p{opacity:.7;max-width:600px;margin-bottom:28px}
+
+/* Button */
+.btn{
+  background:#6b5cff;
+  padding:14px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px #6b5cff55}
+
+/* Cards */
+.card{
+  background:#12121a;
+  border-radius:16px;
+  padding:40px;
+  box-shadow:0 0 60px #6b5cff22 inset;
+  margin-top:40px;
+}
+
+/* FAQ */
+.faq h3{margin-top:20px;cursor:pointer}
+.faq p{display:none;opacity:.7;margin-top:8px}
+
+.footer{
+  text-align:center;
+  padding:60px 20px;
+  opacity:.5;
+  font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<!-- Top Left Tabs -->
+<div class="topbar">
+  <div class="tab" onclick="showSection('home')">Home</div>
+  <div class="tab" onclick="showSection('updates')">Updates</div>
+  <div class="tab" onclick="showSection('credits')">Credits</div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+  <div class="hero">
+    <div class="glow"></div>
+    <h1>Your Project Name</h1>
+    <p>Fast. Clean. Reliable. Built for real users.</p>
+    <a href="YourFile.zip" class="btn" download>Download</a>
+  </div>
+
+  <div class="card faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <h3 onclick="toggle(this)">What does this do?</h3>
+    <p>Explain what your project actually does here.</p>
+
+    <h3 onclick="toggle(this)">Is it safe?</h3>
+    <p>Yes. No hidden files or tricks.</p>
+
+    <h3 onclick="toggle(this)">Is it free?</h3>
+    <p>Yes, completely free.</p>
+  </div>
+</div>
+
+<!-- UPDATES -->
+<div id="updates" class="section">
+  <div class="card">
+    <h2>Updates</h2>
+    <p><b>v1.2</b> — Improved performance and fixed bugs.</p>
+    <p><b>v1.1</b> — UI improvements and new features.</p>
+    <p><b>v1.0</b> — Initial release.</p>
+  </div>
+</div>
+
+<!-- CREDITS -->
+<div id="credits" class="section">
+  <div class="card">
+    <h2>Credits</h2>
+    <p>Developer: Your Name</p>
+    <p>Design: Your Name</p>
+    <p>Special Thanks: Anyone you want</p>
+  </div>
+</div>
+
+<div class="footer">
+  © 2026 Your Project — All rights reserved.
+</div>
+
+<script>
+function toggle(el){
+  const p = el.nextElementSibling;
+  p.style.display = p.style.display === 'block' ? 'none' : 'block';
+}
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
